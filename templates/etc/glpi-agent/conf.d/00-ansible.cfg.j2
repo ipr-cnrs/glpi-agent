@@ -1,0 +1,8 @@
+{{ ansible_managed | comment }}
+
+# See /etc/glpi-agent/agent.cfg for default configuration
+
+{% if glpi_agent__conf_raw %}
+# GLPI Agent configuration from raw content
+{{ glpi_agent__conf_raw }}
+{% endif %}

@@ -92,3 +92,33 @@ glpi_agent__fusioninventory_agent_packages:
   - fusioninventory-agent
 # ]]]
 ### ]]]
+
+### Configuration [[[
+
+# See [official documentation]
+# (https://glpi-agent.readthedocs.io/en/latest/configuration.html)
+# for all parameters syntax.
+
+#### glpi_agent__conf_file_dest [[[
+# **String**. Path to GLPI Agent configuration file on the host.
+# Default value:
+glpi_agent__conf_file_dest: '/etc/glpi-agent/conf.d/00-ansible.cfg'
+# ]]]
+
+#### glpi_agent__conf_file_src [[[
+# **String**. Template used to provide GLPI Agent configuration file.
+# Default value:
+glpi_agent__conf_file_src: '{{ "../templates" + glpi_agent__conf_file_dest + ".j2" }}'
+# ]]]
+
+#### glpi_agent__conf_raw [[[
+# **String**. Template used to provide GLPI Agent configuration file.
+# Default value:
+glpi_agent__conf_raw: ''
+# ```
+# Usage exemple:
+# ```
+# glpi_agent__conf_raw: |
+#   tag = my_new_tag
+# ]]]
+### ]]]

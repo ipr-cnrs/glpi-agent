@@ -3,6 +3,17 @@
 #
 # tasks file for glpi_agent
 
+# Include extra vars file [[[1
+- name: Include vars file per OS
+  ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+      paths:
+        - 'vars'
+
 # Manage fusioninventory related packages [[[1
 - name: Ensure to remove Fusioninventory agent packages
   ansible.builtin.package:
@@ -22,3 +33,14 @@
       files:
         - '{{ ansible_distribution }}.yml'
         - '{{ ansible_os_family }}.yml'
+
+# Manage agent configuration file [[[1
+- name: Create GLPI Agent configuration file
+  ansible.builtin.template:
+    src:   '{{ glpi_agent__conf_file_src }}'
+    dest:  '{{ glpi_agent__conf_file_dest }}'
+    owner: root
+    group: root
+    mode:  '0644'
+  notify: ['Restart glpi-agent service']
+  when: glpi_agent__enabled | bool
