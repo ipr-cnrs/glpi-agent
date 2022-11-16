@@ -3,11 +3,29 @@
 #
 # tasks file for Debian
 
+# Install related packages (dependencies, recommandations,…) first [[[1
+- name: Install glpi-agent related packages
+  ansible.builtin.apt:
+    name:  '{{  ( glpi_agent__depends_packages | flatten
+                  if glpi_agent__depends | bool else [] ) +
+                ( glpi_agent__recommends_packages | flatten
+                  if glpi_agent__recommends | bool else [] ) +
+                ( glpi_agent__suggests_packages | flatten
+                  if glpi_agent__suggests | bool else [] ) }}'
+    state: present
+  register: ga_rel_pkg_result
+  until: ga_rel_pkg_result is success
+  when:
+    - glpi_agent__enabled | bool
+    - ( glpi_agent__depends | bool ) or
+      ( glpi_agent__recommends | bool ) or
+      ( glpi_agent__suggests | bool )
+
 # Manage GLPI Agent package from repositories [[[1
 - name: Ensure glpi-agent package from REPOS
   ansible.builtin.apt:
     name:  '{{ glpi_agent__package_name | flatten }}'
-    state: "present"
+    state: present
     install_recommends: '{{ glpi_agent__recommends }}'
   register: ga_repo_pkg_result
   until: ga_repo_pkg_result is success

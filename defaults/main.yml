@@ -26,11 +26,27 @@ glpi_agent__package_name:
   - glpi-agent
 # ]]]
 
+#### glpi_agent__depends [[[
+# **Boolean**. If GLPI Agent dependencies should be installed
+# as some might be missing…
+# See the dependencies list in OS vars files below.
+# Default value:
+glpi_agent__depends: '{{ True if ansible_os_family in ["Debian"]
+                                   else False }}'
+# ]]]
+
 #### glpi_agent__recommends [[[
 # **Boolean**. If GLPI Agent packages recommandations should be installed.
 # See the recommandations list in OS vars files below.
 # Default value:
 glpi_agent__recommends: false
+# ]]]
+
+#### glpi_agent__suggests [[[
+# **Boolean**. If GLPI Agent packages suggestions should be installed.
+# See the suggestions list in OS vars files below.
+# Default value:
+glpi_agent__suggests: false
 # ]]]
 ### ]]]
 

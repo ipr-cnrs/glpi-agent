@@ -1,0 +1,75 @@
+---
+# .. vim: foldmarker=[[[,]]]:foldmethod=marker
+
+# .. Syntax [[[
+# .. This file is used by a script to generate the README.md file.
+# .. Any line starting with "# .." will be ignored by the script.
+# .. Some other patterns will also be ignored ("---", "# \]\]\]",…).
+# .. If you don't know how-to manage, simply duplicate the content of an
+# .. existing variable.
+# .. ]]]
+
+## Debian dedicated variables
+
+# This variables can't be override by the user.
+
+### Packages and installation for Debian [[[
+
+#### Debian glpi_agent__depends_packages [[[
+# **List**. Dependencies for GLPI Agent package.
+# * Based on `dpkg --info` output for .deb package version 1.4-1.
+# * To skip the installation of these packages, see glpi_agent__depends.
+# Default value:
+glpi_agent__depends_packages:
+  - perl
+  - ucf
+  - lsb-base
+  - libnet-cups-perl
+  - libnet-ip-perl
+  - libnet-ssh2-perl
+  - libwww-perl
+  - libparse-edid-perl
+  - libproc-daemon-perl
+  - libuniversal-require-perl
+  - libfile-which-perl
+  - libxml-treepp-perl
+  - libxml-xpath-perl
+  - libyaml-perl
+  - libtext-template-perl
+  - libcpanel-json-xs-perl
+  - libjson-pp-perl
+  - pciutils
+  - usbutils
+  - libhttp-daemon-perl
+  - libyaml-tiny-perl
+  - libossp-uuid-perl
+  - libdatetime-perl
+  - libsocket-getaddrinfo-perl
+  ## Removed from dependencies to support old distros (before Buster)
+  - usb.ids
+# ]]]
+
+#### Debian glpi_agent__recommends_packages [[[
+# **List**. Recommandations for GLPI Agent package.
+# * Based on `dpkg --info` output for .deb package version 1.4-1.
+# * To skip the installation of these packages, see glpi_agent__recommends.
+# Default value:
+glpi_agent__recommends_packages:
+  - libio-socket-ssl-perl
+  - dmidecode
+  - hdparm
+  - fdisk
+  - net-tools
+# ]]]
+
+#### Debian glpi_agent__suggests_packages [[[
+# **List**. Suggestions for GLPI Agent package.
+# * Based on `dpkg --info` output for .deb package version 1.4-1.
+# * To skip the installation of these packages, see glpi_agent__suggests.
+# Default value:
+glpi_agent__suggests_packages:
+  - smartmontools
+  - read-edid
+# ]]]
+
+### ]]]
