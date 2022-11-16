@@ -3,16 +3,30 @@
 #
 # tasks file for Debian
 
+# Update repositories if any packages to install [[[1
+# Required for Molecule tests
+- name: Update repositories
+  ansible.builtin.apt:
+    update_cache:     true
+    cache_valid_time: 3600
+  register: ga_repo_result
+  until: ga_repo_result is success
+  when:
+    - glpi_agent__enabled | bool
+    - ( glpi_agent__depends | bool ) or
+      ( glpi_agent__recommends | bool ) or
+      ( glpi_agent__suggests | bool )
+
 # Install related packages (dependencies, recommandations,…) first [[[1
 - name: Install glpi-agent related packages
   ansible.builtin.apt:
-    name:  '{{  ( glpi_agent__depends_packages | flatten
+    name: '{{ ( glpi_agent__depends_packages | flatten
                   if glpi_agent__depends | bool else [] ) +
-                ( glpi_agent__recommends_packages | flatten
+              ( glpi_agent__recommends_packages | flatten
                   if glpi_agent__recommends | bool else [] ) +
-                ( glpi_agent__suggests_packages | flatten
+              ( glpi_agent__suggests_packages | flatten
                   if glpi_agent__suggests | bool else [] ) }}'
-    state: present
+    state: "present"
   register: ga_rel_pkg_result
   until: ga_rel_pkg_result is success
   when:
@@ -25,7 +39,7 @@
 - name: Ensure glpi-agent package from REPOS
   ansible.builtin.apt:
     name:  '{{ glpi_agent__package_name | flatten }}'
-    state: present
+    state: "present"
     install_recommends: '{{ glpi_agent__recommends }}'
   register: ga_repo_pkg_result
   until: ga_repo_pkg_result is success
