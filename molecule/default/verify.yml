@@ -1,0 +1,45 @@
+---
+# Playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+
+  - name: Check for glpi-agent directory
+    ansible.builtin.stat:
+      path: /etc/glpi-agent
+    register: ga_d
+
+  - name: Check for glpi-agent directory
+    ansible.builtin.assert:
+      that:
+        - ga_d.stat.exists and ga_d.stat.isdir
+
+  - name: check for 00-ansible.cfg
+    ansible.builtin.stat:
+      path: /etc/glpi-agent/conf.d/00-ansible.cfg
+    register: ga_cf
+
+  - name: check for 00-ansible.cfg
+    ansible.builtin.assert:
+      that:
+        - ga_cf.stat.exists
+
+  - name: service status - active
+    ansible.builtin.command: systemctl is-active glpi-agent.service
+    register: ga_status
+
+  - name: check service status
+    ansible.builtin.assert:
+      that:
+        - 'ga_status.stdout == "active"'
+
+  - name: service status - enabled
+    ansible.builtin.command: systemctl is-enabled glpi-agent.service
+    register: ga_enable
+
+  - name: check service status
+    ansible.builtin.assert:
+      that:
+        - 'ga_enable.stdout == "enabled"'

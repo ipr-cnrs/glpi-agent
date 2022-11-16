@@ -1,0 +1,14 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: "Include ipr_cnrs.glpi_agent"
+      include_role:
+        name: "ipr_cnrs.glpi_agent"
+      vars:
+        # glpi-agent is not yet available in officials repositories
+        glpi_agent__install_from_url: true
+        # glpi-agent requires a server to start the service
+        glpi_agent__conf_raw: |
+          server = http://server.domain.com/front/inventory.php
