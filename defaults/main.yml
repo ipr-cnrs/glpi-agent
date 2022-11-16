@@ -19,6 +19,27 @@
 glpi_agent__enabled: true
 # ]]]
 
+#### glpi_agent__install_from_url [[[
+# **Boolean**. If GLPI Agent package should be installed from package build by
+# GLIP project.
+# Default value:
+glpi_agent__install_from_url: false
+# ]]]
+
+#### glpi_agent__version [[[
+# **String**. GLPI Agent version to install.
+# Default value:
+glpi_agent__version: '1.4-1'
+# ]]]
+
+#### glpi_agent__major_version [[[
+# **String**. Extract the major version in order to build
+# glpi_agent__package_url variable.
+# * eg for the last version (1.4-1), it will become **1.4**.
+# Default value:
+glpi_agent__major_version: '{{ glpi_agent__version.split("-")[0] }}'
+# ]]]
+
 #### glpi_agent__package_name [[[
 # **List**. GLPI Agent package name to install.
 # Default value:
@@ -27,8 +48,9 @@ glpi_agent__package_name:
 # ]]]
 
 #### glpi_agent__depends [[[
-# **Boolean**. If GLPI Agent dependencies should be installed
-# as some might be missing…
+# **Boolean**. If GLPI Agent dependencies should be installed.
+# Required for installation from URL and because some might be
+# missing from dependencies list…
 # See the dependencies list in OS vars files below.
 # Default value:
 glpi_agent__depends: '{{ True if ansible_os_family in ["Debian"]
