@@ -21,12 +21,12 @@
 # Install related packages (dependencies, recommandations,…) first [[[1
 - name: Install glpi-agent related packages
   ansible.builtin.apt:
-    name: '{{ ( glpi_agent__depends_packages | flatten
-                  if glpi_agent__depends | bool else [] ) +
-              ( glpi_agent__recommends_packages | flatten
-                  if glpi_agent__recommends | bool else [] ) +
-              ( glpi_agent__suggests_packages | flatten
-                  if glpi_agent__suggests | bool else [] ) }}'
+    name: '{{ (glpi_agent__depends_packages | flatten
+                  if glpi_agent__depends | bool else []) +
+              (glpi_agent__recommends_packages | flatten
+                  if glpi_agent__recommends | bool else []) +
+              (glpi_agent__suggests_packages | flatten
+                  if glpi_agent__suggests | bool else []) }}'
     state: "present"
   register: ga_rel_pkg_result
   until: ga_rel_pkg_result is success
