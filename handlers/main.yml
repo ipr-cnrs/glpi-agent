@@ -1,0 +1,11 @@
+---
+# handlers file for glpi-agent
+
+- name: Restart glpi-agent service
+  ansible.builtin.systemd:
+    state: restarted
+    name: 'glpi-agent'
+  async: 5
+  poll:  2
+  when:
+    - ansible_service_mgr == 'systemd'
