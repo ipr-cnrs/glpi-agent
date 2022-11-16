@@ -44,3 +44,15 @@
     mode:  '0644'
   notify: ['Restart glpi-agent service']
   when: glpi_agent__enabled | bool
+
+# Manage glpi-agent service [[[1
+- name: Manage GLPI Agent service
+  ansible.builtin.systemd:
+    state:   '{{ "started" if (glpi_agent__enabled | bool) else "stopped" }}'
+    name:    'glpi-agent'
+    enabled: '{{ glpi_agent__enabled | bool }}'
+  async: 10
+  poll:  2
+  when:
+    - not ansible_check_mode
+    - ansible_service_mgr == 'systemd'
