@@ -26,3 +26,24 @@ glpi_agent__package_name:
   - glpi-agent
 # ]]]
 ### ]]]
+
+### Fusioninventory Agent [[[
+
+# The [official documentation]
+# (https://glpi-agent.readthedocs.io/en/latest/installation/#installation)
+# recommends to uninstall fusioninventory agent before installing GLPI Agent.
+# Packages and related configuration files won't be purge by this role.
+
+#### glpi_agent__fusioninventory_agent_state [[[
+# State of previous Fusioninventory agent.
+# Default value:
+glpi_agent__fusioninventory_agent_state: 'absent'
+# ]]]
+
+#### glpi_agent__fusioninventory_agent_packages [[[
+# List of Fusioninventory agent packages to remove.
+# Default value:
+glpi_agent__fusioninventory_agent_packages:
+  - fusioninventory-agent
+# ]]]
+### ]]]

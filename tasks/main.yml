@@ -3,6 +3,17 @@
 #
 # tasks file for glpi_agent
 
+# Manage fusioninventory related packages [[[1
+- name: Ensure to remove Fusioninventory agent packages
+  ansible.builtin.package:
+    name: '{{ glpi_agent__fusioninventory_agent_packages | flatten }}'
+    state: 'absent'
+  register: ga_fi_pkg_result
+  until: ga_fi_pkg_result is succeeded
+  when:
+    - glpi_agent__enabled | bool
+    - glpi_agent__fusioninventory_agent_state == "absent"
+
 # Specific tasks per OS [[[1
 - name: Include tasks per OS
   ansible.builtin.include_tasks: "{{ lookup('first_found', params) }}"
