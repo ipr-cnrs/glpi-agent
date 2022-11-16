@@ -1,0 +1,19 @@
+---
+galaxy_info:
+  author: "Jérémy Gardais"
+  namespace: ipr_cnrs
+  role_name: glpi_agent
+  description: "Install and manage glpi-agent"
+  company: IPR
+  license: WTFPL
+  min_ansible_version: "2.10"
+  platforms:
+    - name: Debian
+      versions:
+        - bullseye
+  galaxy_tags:
+    - glpi
+    - agent
+    - glpiagent
+    - inventory
+dependencies: []
