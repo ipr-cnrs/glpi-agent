@@ -11,6 +11,7 @@ extends: default
 
 ignore: |
   docs/
+  molecule/
 
 # Rules documentation: https://yamllint.readthedocs.io/en/latest/rules.html
 rules:
