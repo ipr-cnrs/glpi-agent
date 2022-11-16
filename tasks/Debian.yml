@@ -1,0 +1,14 @@
+---
+# .. vim: foldmarker=[[[,]]]:foldmethod=marker
+#
+# tasks file for Debian
+
+# Manage GLPI Agent package from repositories [[[1
+- name: Ensure glpi-agent package from REPOS
+  ansible.builtin.apt:
+    name:  '{{ glpi_agent__package_name | flatten }}'
+    state: "present"
+  register: ga_repo_pkg_result
+  until: ga_repo_pkg_result is success
+  when:
+    - glpi_agent__enabled | bool

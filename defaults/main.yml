@@ -1,0 +1,28 @@
+---
+# .. vim: foldmarker=[[[,]]]:foldmethod=marker
+
+# .. Syntax [[[
+# .. This file is used by a script to generate the README.md file.
+# .. Any line starting with "# .." will be ignored by the script.
+# .. Some other patterns will also be ignored ("---", "# \]\]\]",…).
+# .. If you don't know how-to manage, simply duplicate the content of an
+# .. existing variable.
+# .. ]]]
+
+## Default variables
+
+### Packages and installation [[[
+
+#### glpi_agent__enabled [[[
+# **Boolean**. Enable or disable glpi-agent's installation and configuration.
+# Default value:
+glpi_agent__enabled: true
+# ]]]
+
+#### glpi_agent__package_name [[[
+# **List**. GLPI Agent package name to install.
+# Default value:
+glpi_agent__package_name:
+  - glpi-agent
+# ]]]
+### ]]]
