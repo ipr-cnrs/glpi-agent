@@ -8,6 +8,7 @@
   ansible.builtin.apt:
     name:  '{{ glpi_agent__package_name | flatten }}'
     state: "present"
+    install_recommends: '{{ glpi_agent__recommends }}'
   register: ga_repo_pkg_result
   until: ga_repo_pkg_result is success
   when:

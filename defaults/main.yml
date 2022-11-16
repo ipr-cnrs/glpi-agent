@@ -25,6 +25,13 @@ glpi_agent__enabled: true
 glpi_agent__package_name:
   - glpi-agent
 # ]]]
+
+#### glpi_agent__recommends [[[
+# **Boolean**. If GLPI Agent packages recommandations should be installed.
+# See the recommandations list in OS vars files below.
+# Default value:
+glpi_agent__recommends: false
+# ]]]
 ### ]]]
 
 ### Fusioninventory Agent [[[
