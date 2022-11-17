@@ -35,7 +35,7 @@ glpi_agent__version: '1.4-1'
 #### glpi_agent__major_version [[[
 # **String**. Extract the major version in order to build
 # glpi_agent__package_url variable.
-# * eg for the last version (1.4-1), it will become **1.4**.
+# * eg. for the last version (1.4-1), it will become **1.4**.
 # Default value:
 glpi_agent__major_version: '{{ glpi_agent__version.split("-")[0] }}'
 # ]]]
@@ -51,7 +51,8 @@ glpi_agent__package_name:
 # **Boolean**. If GLPI Agent dependencies should be installed.
 # Required for installation from URL and because some might be
 # missing from dependencies list…
-# See the dependencies list in OS vars files below.
+# See the dependencies list in OS vars files
+# ([Debian](#debian-glpi_agent__depends_packages)) below.
 # Default value:
 glpi_agent__depends: '{{ True if ansible_os_family in ["Debian"]
                                    else False }}'
@@ -59,14 +60,16 @@ glpi_agent__depends: '{{ True if ansible_os_family in ["Debian"]
 
 #### glpi_agent__recommends [[[
 # **Boolean**. If GLPI Agent packages recommandations should be installed.
-# See the recommandations list in OS vars files below.
+# See the recommandations list in OS vars files
+# ([Debian](#debian-glpi_agent__recommends_packages)) below.
 # Default value:
 glpi_agent__recommends: false
 # ]]]
 
 #### glpi_agent__suggests [[[
 # **Boolean**. If GLPI Agent packages suggestions should be installed.
-# See the suggestions list in OS vars files below.
+# See the suggestions list in OS vars files
+# ([Debian](#debian-glpi_agent__suggests_packages)) below.
 # Default value:
 glpi_agent__suggests: false
 # ]]]
@@ -74,8 +77,7 @@ glpi_agent__suggests: false
 
 ### Fusioninventory Agent [[[
 
-# The [official documentation]
-# (https://glpi-agent.readthedocs.io/en/latest/installation/#installation)
+# The [official documentation][glpi agent doc installation]
 # recommends to uninstall fusioninventory agent before installing GLPI Agent.
 # Packages and related configuration files won't be purge by this role.
 
@@ -95,8 +97,7 @@ glpi_agent__fusioninventory_agent_packages:
 
 ### Configuration [[[
 
-# See [official documentation]
-# (https://glpi-agent.readthedocs.io/en/latest/configuration.html)
+# See [official documentation][glpi agent doc configuration]
 # for all parameters syntax.
 
 #### glpi_agent__conf_file_dest [[[
@@ -117,7 +118,7 @@ glpi_agent__conf_file_src: '{{ "../templates" + glpi_agent__conf_file_dest + ".j
 glpi_agent__conf_raw: ''
 # ```
 # Usage exemple:
-# ```
+# ``` yml
 # glpi_agent__conf_raw: |
 #   tag = my_new_tag
 # ]]]
