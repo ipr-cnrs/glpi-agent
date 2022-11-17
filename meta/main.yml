@@ -11,6 +11,10 @@ galaxy_info:
     - name: Debian
       versions:
         - bullseye
+        - buster
+    - name: Ubuntu
+      versions:
+        - jammy
   galaxy_tags:
     - glpi
     - agent
