@@ -1,0 +1,8 @@
+# Generated doc files by yaml2md
+docs/defaults_main.md
+docs/vars_*.md
+# Generated doc files by Makefile
+docs/10.*.md
+docs/15.vars_*.md
+# Temp directory (Python VirtualEnv, yaml2md,…)
+.tmp

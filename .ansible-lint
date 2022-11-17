@@ -3,6 +3,7 @@
 # Ignore these paths during auto-detection
 exclude_paths:
   - 'molecule/'
+  - '.tmp/'
 
 skip_list:
   - command-instead-of-module

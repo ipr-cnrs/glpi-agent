@@ -10,8 +10,8 @@
 extends: default
 
 ignore: |
-  docs/
   molecule/
+  .tmp/
 
 # Rules documentation: https://yamllint.readthedocs.io/en/latest/rules.html
 rules:
