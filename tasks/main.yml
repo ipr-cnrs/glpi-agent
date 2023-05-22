@@ -13,6 +13,8 @@
         - '{{ ansible_os_family }}.yml'
       paths:
         - 'vars'
+  when:
+    - glpi_agent__enabled | bool
 
 # Manage fusioninventory related packages [[[1
 - name: Ensure to remove Fusioninventory agent packages
@@ -33,6 +35,8 @@
       files:
         - '{{ ansible_distribution }}.yml'
         - '{{ ansible_os_family }}.yml'
+  when:
+    - glpi_agent__enabled | bool
 
 # Manage agent configuration file [[[1
 - name: Create GLPI Agent configuration file

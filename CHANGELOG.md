@@ -1,3 +1,8 @@
+## v1.0.1
+
+### Fixes
+* Load vars file and remove fusioninventory only if `glpi_agent__enabled` is set.
+
 ## v1.0.0
 
 ### Features

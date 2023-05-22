@@ -12,7 +12,6 @@
   register: ga_repo_result
   until: ga_repo_result is success
   when:
-    - glpi_agent__enabled | bool
     - ( not glpi_agent__install_from_url | bool ) or
       ( glpi_agent__depends | bool ) or
       ( glpi_agent__recommends | bool ) or
@@ -31,7 +30,6 @@
   register: ga_rel_pkg_result
   until: ga_rel_pkg_result is success
   when:
-    - glpi_agent__enabled | bool
     - ( glpi_agent__depends | bool ) or
       ( glpi_agent__recommends | bool ) or
       ( glpi_agent__suggests | bool )
@@ -45,7 +43,6 @@
   register: ga_repo_pkg_result
   until: ga_repo_pkg_result is success
   when:
-    - glpi_agent__enabled | bool
     - not glpi_agent__install_from_url | bool
 
 # Install GLPI Agent from remote .deb file [[[1
@@ -56,5 +53,4 @@
   register: ga_url_pkg_result
   until: ga_url_pkg_result is success
   when:
-    - glpi_agent__enabled | bool
     - glpi_agent__install_from_url | bool
