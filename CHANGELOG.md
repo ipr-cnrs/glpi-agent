@@ -2,6 +2,8 @@
 
 ### Fixes
 * Load vars file and remove fusioninventory only if `glpi_agent__enabled` is set.
+* Manage `glpi-agent` systemd service only if `glpi_agent__enabled` is set to
+  avoid "Could not find the requested service glpi-agent: host" error.
 
 ## v1.0.0
 

@@ -58,5 +58,6 @@
   async: 10
   poll:  2
   when:
+    - glpi_agent__enabled | bool
     - not ansible_check_mode
     - ansible_service_mgr == 'systemd'
