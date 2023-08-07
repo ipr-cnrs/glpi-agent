@@ -8,8 +8,8 @@ driver:
   name: docker
 platforms:
 
-  - name: systemd-debian11
-    image: jrei/systemd-debian:11
+  - name: systemd-debian12
+    image: jrei/systemd-debian:12
     privileged: True
     tmpfs:
       - /run
@@ -21,8 +21,8 @@ platforms:
       - SYS_ADMIN
     command: "/lib/systemd/systemd"
 
-  - name: systemd-debian10
-    image: jrei/systemd-debian:10
+  - name: systemd-debian11
+    image: jrei/systemd-debian:11
     privileged: True
     tmpfs:
       - /run
