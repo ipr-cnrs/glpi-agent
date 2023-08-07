@@ -71,6 +71,10 @@
     - glpi_agent__enabled | bool
     - glpi_agent__cron == "present"
 
+- name: Get list of installed packages
+  ansible.builtin.package_facts:
+    manager: auto
+
 - name: Create cron entry
   ansible.builtin.cron:
     name: glpi-agent-oneshot
@@ -84,5 +88,4 @@
     state: '{{ glpi_agent__cron }}'
     job: '{{ glpi_agent__cron_command }}'
   when:
-    - glpi_agent__enabled | bool
-    - glpi_agent__cron == "present"
+    - "'cron' is in ansible_facts.packages"

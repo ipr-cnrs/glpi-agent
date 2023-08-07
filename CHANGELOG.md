@@ -1,3 +1,7 @@
+## v1.1.1
+### Enhancements
+* Add cronjob only if `cron` package is installed.
+
 ## v1.1.0
 ### Enhancements
 * Update to version [1.5-1](https://github.com/glpi-project/glpi-agent/releases/tag/1.5).
