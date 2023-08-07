@@ -194,7 +194,7 @@ These variables can't be overrided by the user.
 
 #### Debian glpi_agent__package_url
 The URL used to download .deb package for GLPI Agent.
-eg for version 1.5 :
+eg for version **1.5** :
 https://github.com/glpi-project/glpi-agent/releases/download/1.5/glpi-agent_1.5-1_all.deb
 
 ``` yml
@@ -207,7 +207,7 @@ glpi_agent__package_url: '{{ "https://github.com/glpi-project/glpi-agent/release
 
 #### Debian glpi_agent__depends_packages
 **List**. Dependencies for GLPI Agent package.
-* Based on `dpkg --info` output for .deb package version 1.5-1.
+* Based on `dpkg --info` output for .deb package version **1.5-1**.
 * To skip the installation of these packages,
   see [glpi_agent__depends](#glpi_agent__depends) above.
 
@@ -244,7 +244,7 @@ glpi_agent__depends_packages:
 
 #### Debian glpi_agent__recommends_packages
 **List**. Recommandations for GLPI Agent package.
-* Based on `dpkg --info` output for .deb package version 1.5-1.
+* Based on `dpkg --info` output for .deb package version **1.5-1**.
 * To skip the installation of these packages,
   see [glpi_agent__recommends](#glpi_agent__recommends) above.
 
@@ -259,7 +259,7 @@ glpi_agent__recommends_packages:
 
 #### Debian glpi_agent__suggests_packages
 **List**. Suggestions for GLPI Agent package.
-* Based on `dpkg --info` output for .deb package version 1.5-1.
+* Based on `dpkg --info` output for .deb package version **1.5-1**.
 * To skip the installation of these packages,
   see [glpi_agent__suggests](#glpi_agent__suggests) above.
 
