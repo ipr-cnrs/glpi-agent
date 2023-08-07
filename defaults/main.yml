@@ -123,3 +123,20 @@ glpi_agent__conf_raw: ''
 #   tag = my_new_tag
 # ]]]
 ### ]]]
+
+### Service [[[
+
+#### glpi_agent__service_state [[[
+# **String**. The targeted service status
+# Default value:
+glpi_agent__service_state: '{{ "started" if (glpi_agent__enabled | bool)
+                          else "stopped" }}'
+# ]]]
+
+#### glpi_agent__service_enabled [[[
+# **String**. The targeted service status
+# Default value:
+glpi_agent__service_enabled: '{{ glpi_agent__enabled | bool }}'
+# ]]]
+
+### ]]]

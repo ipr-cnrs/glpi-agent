@@ -7,6 +7,7 @@ glpi-agent
      * [Packages and installation](#packages-and-installation)
      * [Fusioninventory Agent](#fusioninventory-agent)
      * [Configuration](#configuration)
+     * [Service](#service)
 1. [Debian dedicated variables](#debian-dedicated-variables)
 1. [Development](#development)
 1. [License](#license)
@@ -183,6 +184,23 @@ Usage exemple:
 ``` yml
 glpi_agent__conf_raw: |
   tag = my_new_tag
+```
+
+### Service
+
+#### glpi_agent__service_state
+**String**. The targeted service status
+
+``` yml
+glpi_agent__service_state: '{{ "started" if (glpi_agent__enabled | bool)
+                          else "stopped" }}'
+```
+
+#### glpi_agent__service_enabled
+**String**. The targeted service status
+
+``` yml
+glpi_agent__service_enabled: '{{ glpi_agent__enabled | bool }}'
 ```
 
 

@@ -1,8 +1,9 @@
 ## v1.X.Y
-### Changes
+### Enhancements
 * Update to version [1.5-1](https://github.com/glpi-project/glpi-agent/releases/tag/1.5).
 * Drop support of Debian 10 Buster.
 * Add support of Debian 12 Bookworm.
+* Manage service state and enabled.
 
 ### Fixes
 * Molecule: Fix access to temp dir.

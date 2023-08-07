@@ -52,12 +52,11 @@
 # Manage glpi-agent service [[[1
 - name: Manage GLPI Agent service
   ansible.builtin.systemd:
-    state:   '{{ "started" if (glpi_agent__enabled | bool) else "stopped" }}'
+    state:   '{{ glpi_agent__service_state }}'
     name:    'glpi-agent'
-    enabled: '{{ glpi_agent__enabled | bool }}'
+    enabled: '{{ glpi_agent__service_enabled | bool }}'
   async: 10
   poll:  2
   when:
-    - glpi_agent__enabled | bool
     - not ansible_check_mode
     - ansible_service_mgr == 'systemd'
