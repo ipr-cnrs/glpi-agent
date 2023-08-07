@@ -83,13 +83,13 @@ glpi_agent__install_from_url: false
 **String**. GLPI Agent version to install.
 
 ``` yml
-glpi_agent__version: '1.4-1'
+glpi_agent__version: '1.5-1'
 ```
 
 #### glpi_agent__major_version
 **String**. Extract the major version in order to build
 glpi_agent__package_url variable.
-* eg. for the last version (1.4-1), it will become **1.4**.
+* eg. for the last version (1.5-1), it will become **1.5**.
 
 ``` yml
 glpi_agent__major_version: '{{ glpi_agent__version.split("-")[0] }}'
@@ -194,8 +194,8 @@ These variables can't be overrided by the user.
 
 #### Debian glpi_agent__package_url
 The URL used to download .deb package for GLPI Agent.
-eg for version 1.4 :
-https://github.com/glpi-project/glpi-agent/releases/download/1.4/glpi-agent_1.4-1_all.deb
+eg for version 1.5 :
+https://github.com/glpi-project/glpi-agent/releases/download/1.5/glpi-agent_1.5-1_all.deb
 
 ``` yml
 glpi_agent__package_url: '{{ "https://github.com/glpi-project/glpi-agent/releases/download/"
@@ -207,7 +207,7 @@ glpi_agent__package_url: '{{ "https://github.com/glpi-project/glpi-agent/release
 
 #### Debian glpi_agent__depends_packages
 **List**. Dependencies for GLPI Agent package.
-* Based on `dpkg --info` output for .deb package version 1.4-1.
+* Based on `dpkg --info` output for .deb package version 1.5-1.
 * To skip the installation of these packages,
   see [glpi_agent__depends](#glpi_agent__depends) above.
 
@@ -222,10 +222,10 @@ glpi_agent__depends_packages:
   - libwww-perl
   - libparse-edid-perl
   - libproc-daemon-perl
+  - libparallel-forkmanager-perl
   - libuniversal-require-perl
   - libfile-which-perl
-  - libxml-treepp-perl
-  - libxml-xpath-perl
+  - libxml-libxml-perl
   - libyaml-perl
   - libtext-template-perl
   - libcpanel-json-xs-perl
@@ -237,13 +237,14 @@ glpi_agent__depends_packages:
   - libossp-uuid-perl
   - libdatetime-perl
   - libsocket-getaddrinfo-perl
-  ## Removed from dependencies to support old distros (before Buster)
-  - usb.ids
+  ## Missing from `dpkg --info` but used in glpi-agent workflow
+  - libxml-treepp-perl
+  - libxml-xpath-perl
 ```
 
 #### Debian glpi_agent__recommends_packages
 **List**. Recommandations for GLPI Agent package.
-* Based on `dpkg --info` output for .deb package version 1.4-1.
+* Based on `dpkg --info` output for .deb package version 1.5-1.
 * To skip the installation of these packages,
   see [glpi_agent__recommends](#glpi_agent__recommends) above.
 
@@ -258,7 +259,7 @@ glpi_agent__recommends_packages:
 
 #### Debian glpi_agent__suggests_packages
 **List**. Suggestions for GLPI Agent package.
-* Based on `dpkg --info` output for .deb package version 1.4-1.
+* Based on `dpkg --info` output for .deb package version 1.5-1.
 * To skip the installation of these packages,
   see [glpi_agent__suggests](#glpi_agent__suggests) above.
 
@@ -279,7 +280,7 @@ For `defaults/main.yml` and vars files :
   * For a new variable, prefixing it with **glpi_agent__** allows
     to easily manage it in Ansible's host_vars,…
 
-Feel free to share any good practices (for Debian/CentOS) and requests.
+Feel free to share any good practices (for Debian/CentOS) and requests (and PRs 😀).
 
 ## License
 
