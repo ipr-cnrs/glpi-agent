@@ -6,6 +6,7 @@
 
 ### Fixes
 * Molecule: Fix access to temp dir.
+* Molecule: Ensure to install molecule-plugins to have docker driver.
 
 ## v1.0.1
 
