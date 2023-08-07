@@ -1,6 +1,7 @@
 ## v1.1.1
 ### Enhancements
 * Add cronjob only if `cron` package is installed.
+* Molecule: Test both systemd service and cronjob.
 
 ## v1.1.0
 ### Enhancements

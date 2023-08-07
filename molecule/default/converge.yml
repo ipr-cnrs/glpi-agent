@@ -12,3 +12,5 @@
         # glpi-agent requires a server to start the service
         glpi_agent__conf_raw: |
           server = http://server.domain.com/front/inventory.php
+        # Test both systemd service and cronjob
+        glpi_agent__cron: 'present'

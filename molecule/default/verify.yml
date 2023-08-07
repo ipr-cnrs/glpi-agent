@@ -6,7 +6,7 @@
   gather_facts: false
   tasks:
 
-  - name: Check for glpi-agent directory
+  - name: Stat for glpi-agent directory
     ansible.builtin.stat:
       path: /etc/glpi-agent
     register: ga_d
@@ -16,7 +16,7 @@
       that:
         - ga_d.stat.exists and ga_d.stat.isdir
 
-  - name: check for 00-ansible.cfg
+  - name: Stat for 00-ansible.cfg
     ansible.builtin.stat:
       path: /etc/glpi-agent/conf.d/00-ansible.cfg
     register: ga_cf
@@ -43,3 +43,13 @@
     ansible.builtin.assert:
       that:
         - 'ga_enable.stdout == "enabled"'
+
+  - name: Stat for glpi-agent cronjob
+    ansible.builtin.stat:
+      path: /etc/cron.d/glpi-agent-oneshot
+    register: ga_cronjob
+
+  - name: Check for glpi-agent cronjob
+    ansible.builtin.assert:
+      that:
+        - ga_cronjob.stat.exists and ga_cronjob.stat.isreg
