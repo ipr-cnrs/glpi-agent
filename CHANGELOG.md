@@ -4,6 +4,9 @@
 * Drop support of Debian 10 Buster.
 * Add support of Debian 12 Bookworm.
 
+### Fixes
+* Molecule: Fix access to temp dir.
+
 ## v1.0.1
 
 ### Fixes
