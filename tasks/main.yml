@@ -60,3 +60,29 @@
   when:
     - not ansible_check_mode
     - ansible_service_mgr == 'systemd'
+
+# Manage glpi-agent cronjob [[[1
+- name: Ensure to have cron package for cronjob
+  ansible.builtin.package:
+    name: 'cron'
+  register: ga_cron_pkg_result
+  until: ga_cron_pkg_result is succeeded
+  when:
+    - glpi_agent__enabled | bool
+    - glpi_agent__cron == "present"
+
+- name: Create cron entry
+  ansible.builtin.cron:
+    name: glpi-agent-oneshot
+    cron_file: glpi-agent-oneshot
+    day: '{{ glpi_agent__cron_day }}'
+    hour: '{{ glpi_agent__cron_hour }}'
+    minute: '{{ glpi_agent__cron_minute }}'
+    month: '{{ glpi_agent__cron_month }}'
+    weekday: '{{ glpi_agent__cron_weekday }}'
+    user: '{{ glpi_agent__cron_user }}'
+    state: '{{ glpi_agent__cron }}'
+    job: '{{ glpi_agent__cron_command }}'
+  when:
+    - glpi_agent__enabled | bool
+    - glpi_agent__cron == "present"

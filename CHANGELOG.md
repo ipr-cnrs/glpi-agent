@@ -4,6 +4,7 @@
 * Drop support of Debian 10 Buster.
 * Add support of Debian 12 Bookworm.
 * Manage service state and enabled.
+* Allow running the agent with a cron job instead of the service (thanks to @yodabzh).
 
 ### Fixes
 * Molecule: Fix access to temp dir.

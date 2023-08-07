@@ -8,6 +8,7 @@ glpi-agent
      * [Fusioninventory Agent](#fusioninventory-agent)
      * [Configuration](#configuration)
      * [Service](#service)
+     * [Cron](#cron)
 1. [Debian dedicated variables](#debian-dedicated-variables)
 1. [Development](#development)
 1. [License](#license)
@@ -202,6 +203,72 @@ glpi_agent__service_state: '{{ "started" if (glpi_agent__enabled | bool)
 ``` yml
 glpi_agent__service_enabled: '{{ glpi_agent__enabled | bool }}'
 ```
+
+### Cron configuration
+
+Instead of running a systemd service, `glpi-agent` can be ran by a cronjob.
+
+<details>
+  <summary>List of cron's related variables (<i>click to expand</i>).</summary>
+  <!-- have to be followed by an empty line! -->
+
+#### glpi_agent__cron
+**String**. If cronjob should be installed. Can be "absent" or "present".
+
+``` yml
+glpi_agent__cron: 'absent'
+```
+
+#### glpi_agent__cron_day
+Which days should the agent be ran.
+
+``` yml
+glpi_agent__cron_day: '*'
+```
+
+#### glpi_agent__cron_hour
+Which hours should the agent be ran.
+
+``` yml
+glpi_agent__cron_hour: '23'
+```
+
+#### glpi_agent__cron_minute
+Which minutes should the agent be ran.
+
+``` yml
+glpi_agent__cron_minute: '0'
+```
+
+#### glpi_agent__cron_month
+Which months should the agent be ran.
+
+``` yml
+glpi_agent__cron_month: '*'
+```
+
+#### glpi_agent__cron_weekday
+Which weekdays should the agent be ran.
+
+``` yml
+glpi_agent__cron_weekday: '*'
+```
+
+#### glpi_agent__cron_user
+Which user should the agent be ran under.
+
+``` yml
+glpi_agent__cron_user: 'root'
+```
+
+#### glpi_agent__cron_command
+The command should cron run.
+
+``` yml
+glpi_agent__cron_command: 'sleep $(( RANDOM \\% 3600 )); /bin/glpi-agent'
+```
+
+</details>
 
 
 ## Debian dedicated variables
