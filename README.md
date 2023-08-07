@@ -8,7 +8,7 @@ glpi-agent
      * [Fusioninventory Agent](#fusioninventory-agent)
      * [Configuration](#configuration)
      * [Service](#service)
-     * [Cron](#cron)
+     * [Cron Configuration](#cron-configuration)
 1. [Debian dedicated variables](#debian-dedicated-variables)
 1. [Development](#development)
 1. [License](#license)
@@ -375,7 +375,7 @@ Feel free to share any good practices (for Debian/CentOS) and requests (and PRs 
 
 Jérémy Gardais
 * [IPR][ipr website] (Institut de Physique de Rennes)
-* [CNRS][cnrs website] and [University of Rennes 1][university rennes1 website]
+* [CNRS][cnrs website] and [University of Rennes][university rennes website]
 
 
 [cnrs website]: https://www.cnrs.fr/
@@ -383,6 +383,6 @@ Jérémy Gardais
 [glpi agent doc installation]: https://glpi-agent.readthedocs.io/en/latest/installation/#installation
 [glpi agent project github]: https://github.com/glpi-project/glpi-agent/releases
 [ipr-cnrs fusioninventory github]: https://github.com/ipr-cnrs/fusioninventory
-[ipr website]: https://ipr.univ-rennes1.fr/
-[university rennes1 website]: https://www.univ-rennes1.fr/
+[ipr website]: https://ipr.univ-rennes.fr/
+[university rennes website]: https://www.univ-rennes.fr/
 [wtfpl website]: http://www.wtfpl.net/about/

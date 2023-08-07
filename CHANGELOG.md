@@ -1,4 +1,4 @@
-## v1.X.Y
+## v1.1.0
 ### Enhancements
 * Update to version [1.5-1](https://github.com/glpi-project/glpi-agent/releases/tag/1.5).
 * Drop support of Debian 10 Buster.
