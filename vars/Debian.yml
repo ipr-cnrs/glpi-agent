@@ -15,18 +15,6 @@
 
 ### Packages and installation for Debian [[[
 
-#### Debian glpi_agent__package_url [[[
-# The URL used to download .deb package for GLPI Agent.
-# eg for version **1.5** :
-# https://github.com/glpi-project/glpi-agent/releases/download/1.5/glpi-agent_1.5-1_all.deb
-# Default value:
-glpi_agent__package_url: '{{ "https://github.com/glpi-project/glpi-agent/releases/download/"
-                           + glpi_agent__major_version
-                           + "/glpi-agent_"
-                           + glpi_agent__version
-                           + "_all.deb" }}'
-# ]]]
-
 #### Debian glpi_agent__depends_packages [[[
 # **List**. Dependencies for GLPI Agent package.
 # * Based on `dpkg --info` output for .deb package version **1.5-1**.
