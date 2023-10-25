@@ -56,7 +56,8 @@ glpi_agent__package_url: '{{ "https://github.com/glpi-project/glpi-agent/release
                            + glpi_agent__major_version
                            + "/glpi-agent_"
                            + glpi_agent__version
-                           + "_all.deb" }}'
+                           + "_all.deb" if (ansible_os_family in ["Debian"])
+                                        else "" }}'
 # ]]]
 
 #### glpi_agent__depends [[[
