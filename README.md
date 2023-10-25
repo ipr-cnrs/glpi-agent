@@ -105,6 +105,20 @@ glpi_agent__package_name:
   - glpi-agent
 ```
 
+#### Debian glpi_agent__package_url
+The URL used to download .deb package for GLPI Agent.
+eg for version **1.5** :
+https://github.com/glpi-project/glpi-agent/releases/download/1.5/glpi-agent_1.5-1_all.deb
+
+``` yml
+glpi_agent__package_url: '{{ "https://github.com/glpi-project/glpi-agent/releases/download/"
+                           + glpi_agent__major_version
+                           + "/glpi-agent_"
+                           + glpi_agent__version
+                           + "_all.deb" if (ansible_os_family in ["Debian"])
+                                        else "" }}'
+```
+
 #### glpi_agent__depends
 **Boolean**. If GLPI Agent dependencies should be installed.
 Required for installation from URL and because some might be
@@ -276,19 +290,6 @@ glpi_agent__cron_command: 'sleep $(( RANDOM \\% 3600 )); /bin/glpi-agent'
 These variables can't be overrided by the user.
 
 ### Packages and installation for Debian
-
-#### Debian glpi_agent__package_url
-The URL used to download .deb package for GLPI Agent.
-eg for version **1.5** :
-https://github.com/glpi-project/glpi-agent/releases/download/1.5/glpi-agent_1.5-1_all.deb
-
-``` yml
-glpi_agent__package_url: '{{ "https://github.com/glpi-project/glpi-agent/releases/download/"
-                           + glpi_agent__major_version
-                           + "/glpi-agent_"
-                           + glpi_agent__version
-                           + "_all.deb" }}'
-```
 
 #### Debian glpi_agent__depends_packages
 **List**. Dependencies for GLPI Agent package.
