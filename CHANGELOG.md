@@ -1,3 +1,7 @@
+## v1.2.0
+### Enhancements
+* Automatically upload new release to Ansible Galaxy.
+
 ## v1.1.2
 ### Fix
 * Move glpi_agent__package_url to `defaults` (fix #1).
