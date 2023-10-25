@@ -1,3 +1,7 @@
+## v1.1.2
+### Fix
+* Move glpi_agent__package_url to `defaults` (fix #1).
+
 ## v1.1.1
 ### Enhancements
 * Add cronjob only if `cron` package is installed.
