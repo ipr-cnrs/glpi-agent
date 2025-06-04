@@ -10,6 +10,7 @@ glpi-agent
      * [Service](#service)
      * [Cron Configuration](#cron-configuration)
 1. [Debian dedicated variables](#debian-dedicated-variables)
+1. [Rocky dedicated variables](#rocky-dedicated-variables)
 1. [Development](#development)
 1. [License](#license)
 1. [Author Information](#author-information)
@@ -111,12 +112,12 @@ eg for version **1.5** :
 https://github.com/glpi-project/glpi-agent/releases/download/1.5/glpi-agent_1.5-1_all.deb
 
 ``` yml
-glpi_agent__package_url: '{{ "https://github.com/glpi-project/glpi-agent/releases/download/"
-                           + glpi_agent__major_version
-                           + "/glpi-agent_"
-                           + glpi_agent__version
-                           + "_all.deb" if (ansible_os_family in ["Debian"])
-                                        else "" }}'
+glpi_agent__package_url: >-
+  {%- if (ansible_os_family in ["Debian"]) -%}
+  https://github.com/glpi-project/glpi-agent/releases/download/{{ glpi_agent__major_version }}/glpi-agent_{{ glpi_agent__version }}_all.deb
+  {%- elif (ansible_os_family in ["RedHat"]) -%}
+  https://github.com/glpi-project/glpi-agent/releases/download/{{ glpi_agent__major_version }}/glpi-agent-{{ glpi_agent__version }}.noarch.rpm
+  {%- endif -%}
 ```
 
 #### glpi_agent__depends
@@ -353,6 +354,93 @@ glpi_agent__recommends_packages:
 glpi_agent__suggests_packages:
   - smartmontools
   - read-edid
+```
+
+
+## Rocky dedicated variables
+
+These variables can't be overrided by the user.
+
+### Packages and installation for Rocky
+
+#### Rocky glpi_agent__depends_packages
+**List**. Dependencies for GLPI Agent package.
+* Based on `yum repoquery --deplist ` output for .rpm package version **1.11-1**.
+* To skip the installation of these packages,
+  see [glpi_agent__depends](#glpi_agent__depends) above.
+
+``` yml
+glpi_agent__depends_packages:
+  - perl-base
+  - perl-constant
+  - perl-Cpanel-JSON-XS
+  - perl-Digest-SHA
+  - perl-Encode
+  - perl-English
+  - perl-Exporter
+  - perl-Fcntl
+  - perl-File-Basename
+  - perl-File-Find
+  - perl-File-Path
+  - perl-File-stat
+  - perl-File-Temp
+  - perl-File-Which
+  - perl-Getopt-Long
+  - perl-HTTP-Cookies
+  - perl-HTTP-Message
+  - perl-interpreter
+  - perl-IO
+  - perl-IO-Compress
+  - perl-IO-Socket-SSL
+  - perl-lib
+  - perl-libwww-perl
+  - perl-LWP-Protocol-https
+  - perl-MIME-Base64
+  - perl-Net
+  - perl-Net-HTTP
+  - perl-Net-IP
+  - perl-Net-SSLeay
+  - perl-Parallel-ForkManager
+  - perl-parent
+  - perl-PathTools
+  - perl-Pod-Usage
+  - perl-POSIX
+  - perl-Proc-Daemon
+  - perl-Socket
+  - perl-Socket-GetAddrInfo
+  - perl-Storable
+  - perl-Sys-Hostname
+  - perl-Sys-Syslog
+  - perl-Text-Template
+  - perl-threads
+  - perl-Thread-Semaphore
+  - perl-threads-shared
+  - perl-Time-HiRes
+  - perl-Time-Local
+  - perl-UNIVERSAL-require
+  - perl-URI
+  - perl-vars
+  - perl-XML-LibXML
+```
+
+#### Rocky glpi_agent__recommends_packages
+**List**. Recommandations for GLPI Agent package.
+* Based on `yum repoquery --deplist` output for .rpm package version **1.11-1**.
+* To skip the installation of these packages,
+  see [glpi_agent__recommends](#glpi_agent__recommends) above.
+
+``` yml
+glpi_agent__recommends_packages:
+```
+
+#### Rocky glpi_agent__suggests_packages
+**List**. Suggestions for GLPI Agent package.
+* Based on `yum repoquery --deplist` output for .rpm package version **1.5-1**.
+* To skip the installation of these packages,
+  see [glpi_agent__suggests](#glpi_agent__suggests) above.
+
+``` yml
+glpi_agent__suggests_packages:
 ```
 
 
