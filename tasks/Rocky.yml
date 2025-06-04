@@ -1,0 +1,27 @@
+---
+# .. vim: foldmarker=[[[,]]]:foldmethod=marker
+#
+# tasks file for Rocky
+
+# Install GLPI Agent from remote .rpm file [[[1
+# dnf module can download a .rpm file
+# Package perl(Net::IP), perl(Parallel::ForkManager), perl(Proc::Daemon), perl(Socket::GetAddrInfo), perl(UNIVERSAL::require) are in EPEL
+- name: Ensure the EPEL repository is enabled
+  ansible.builtin.dnf:
+    name: epel-release
+    state: present
+  when:
+    - glpi_agent__install_from_url | bool
+
+# Package perl(DateTime), perl(Data::UUID), perl(HTTP::Daemon), perl(YAML::Tiny) are in crb repo
+# `disable_gpg_check: true` fix this issue: Failed to validate GPG signature for glpi-agent-1.11-1.noarch: Package glpi-agent-1.11-1.noarch5pzw3667.rpm is not signed
+- name: Ensure GLPI Agent package from URL
+  ansible.builtin.dnf:
+    name: '{{ glpi_agent__package_url }}'
+    state: present
+    enablerepo: crb
+    disable_gpg_check: true
+  register: ga_url_pkg_result
+  until: ga_url_pkg_result is success
+  when:
+    - glpi_agent__install_from_url | bool

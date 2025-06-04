@@ -1,0 +1,95 @@
+---
+# .. vim: foldmarker=[[[,]]]:foldmethod=marker
+
+# .. Syntax [[[
+# .. This file is used by a script to generate the README.md file.
+# .. Any line starting with "# .." will be ignored by the script.
+# .. Some other patterns will also be ignored ("---", "# \]\]\]",…).
+# .. If you don't know how-to manage, simply duplicate the content of an
+# .. existing variable.
+# .. ]]]
+
+## Rocky dedicated variables
+
+# These variables can't be overrided by the user.
+
+### Packages and installation for Rocky [[[
+
+#### Rocky glpi_agent__depends_packages [[[
+# **List**. Dependencies for GLPI Agent package.
+# * Based on `yum repoquery --deplist ` output for .rpm package version **1.11-1**.
+# * To skip the installation of these packages,
+#   see [glpi_agent__depends](#glpi_agent__depends) above.
+# Default value:
+glpi_agent__depends_packages:
+  - perl-base
+  - perl-constant
+  - perl-Cpanel-JSON-XS
+  - perl-Digest-SHA
+  - perl-Encode
+  - perl-English
+  - perl-Exporter
+  - perl-Fcntl
+  - perl-File-Basename
+  - perl-File-Find
+  - perl-File-Path
+  - perl-File-stat
+  - perl-File-Temp
+  - perl-File-Which
+  - perl-Getopt-Long
+  - perl-HTTP-Cookies
+  - perl-HTTP-Message
+  - perl-interpreter
+  - perl-IO
+  - perl-IO-Compress
+  - perl-IO-Socket-SSL
+  - perl-lib
+  - perl-libwww-perl
+  - perl-LWP-Protocol-https
+  - perl-MIME-Base64
+  - perl-Net
+  - perl-Net-HTTP
+  - perl-Net-IP
+  - perl-Net-SSLeay
+  - perl-Parallel-ForkManager
+  - perl-parent
+  - perl-PathTools
+  - perl-Pod-Usage
+  - perl-POSIX
+  - perl-Proc-Daemon
+  - perl-Socket
+  - perl-Socket-GetAddrInfo
+  - perl-Storable
+  - perl-Sys-Hostname
+  - perl-Sys-Syslog
+  - perl-Text-Template
+  - perl-threads
+  - perl-Thread-Semaphore
+  - perl-threads-shared
+  - perl-Time-HiRes
+  - perl-Time-Local
+  - perl-UNIVERSAL-require
+  - perl-URI
+  - perl-vars
+  - perl-XML-LibXML
+# ]]]
+
+#### Rocky glpi_agent__recommends_packages [[[
+# **List**. Recommandations for GLPI Agent package.
+# * Based on `yum repoquery --deplist` output for .rpm package version **1.11-1**.
+# * To skip the installation of these packages,
+#   see [glpi_agent__recommends](#glpi_agent__recommends) above.
+# Default value:
+glpi_agent__recommends_packages:
+# ]]]
+
+#### Rocky glpi_agent__suggests_packages [[[
+# **List**. Suggestions for GLPI Agent package.
+# * Based on `yum repoquery --deplist` output for .rpm package version **1.5-1**.
+# * To skip the installation of these packages,
+#   see [glpi_agent__suggests](#glpi_agent__suggests) above.
+# Default value:
+glpi_agent__suggests_packages:
+# ]]]
+
+### ]]]

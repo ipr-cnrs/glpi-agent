@@ -15,6 +15,9 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - jammy
+    - name: Rocky
+      versions:
+        - Blue Onyx
   galaxy_tags:
     - glpi
     - agent
